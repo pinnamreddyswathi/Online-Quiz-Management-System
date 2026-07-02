@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Online Quiz Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Quiz Score Calculator</title>
 </head>
-<body>
 
-<h1>Online Quiz Management System</h1>
+<body style="font-family:Arial; text-align:center; background:#f2f2f2;">
 
-<div class="container">
-    <p id="question">Question will appear here</p>
+<h1>Online Quiz Score Calculator</h1>
 
-    <button onclick="checkAnswer('A')" id="A"></button><br><br>
-    <button onclick="checkAnswer('B')" id="B"></button><br><br>
-    <button onclick="checkAnswer('C')" id="C"></button><br><br>
-    <button onclick="checkAnswer('D')" id="D"></button><br><br>
+<div style="background:white; width:500px; margin:auto; padding:20px; border-radius:10px;">
 
-    <button onclick="nextQuestion()">Next</button>
+    <form id="quizForm">
 
-    <h2 id="score"></h2>
+        <h3>1. HTML stands for?</h3>
+        <input type="radio" name="q1" value="0"> High Text Markup Language<br>
+        <input type="radio" name="q1" value="1"> Hyper Text Markup Language<br>
+        <input type="radio" name="q1" value="0"> Hyper Transfer Markup Language<br><br>
+
+        <h3>2. CSS is used for?</h3>
+        <input type="radio" name="q2" value="1"> Styling Web Pages<br>
+        <input type="radio" name="q2" value="0"> Database<br>
+        <input type="radio" name="q2" value="0"> Programming<br><br>
+
+        <h3>3. JavaScript is used for?</h3>
+        <input type="radio" name="q3" value="1"> Interactivity<br>
+        <input type="radio" name="q3" value="0"> Hardware<br>
+        <input type="radio" name="q3" value="0"> Networking<br><br>
+
+        <h3>4. HTML tag for image?</h3>
+        <input type="radio" name="q4" value="1"> &lt;img&gt;<br>
+        <input type="radio" name="q4" value="0"> &lt;image&gt;<br>
+        <input type="radio" name="q4" value="0"> &lt;pic&gt;<br><br>
+
+        <h3>5. HTML tag for link?</h3>
+        <input type="radio" name="q5" value="1"> &lt;a&gt;<br>
+        <input type="radio" name="q5" value="0"> &lt;link&gt;<br>
+        <input type="radio" name="q5" value="0"> &lt;href&gt;<br><br>
+
+        <button type="button" onclick="calculateScore()">Submit Quiz</button>
+
+    </form>
+
+    <h2 id="result"></h2>
+
 </div>
 
-<script src="script.js"></script>
+<script>
+function calculateScore() {
+    let score = 0;
+
+    let q1 = document.querySelector('input[name="q1"]:checked');
+    let q2 = document.querySelector('input[name="q2"]:checked');
+    let q3 = document.querySelector('input[name="q3"]:checked');
+    let q4 = document.querySelector('input[name="q4"]:checked');
+    let q5 = document.querySelector('input[name="q5"]:checked');
+
+    if(q1) score += parseInt(q1.value);
+    if(q2) score += parseInt(q2.value);
+    if(q3) score += parseInt(q3.value);
+    if(q4) score += parseInt(q4.value);
+    if(q5) score += parseInt(q5.value);
+
+    document.getElementById("result").innerHTML =
+        "Your Score is: " + score + " / 5";
+}
+</script>
 
 </body>
 </html>
