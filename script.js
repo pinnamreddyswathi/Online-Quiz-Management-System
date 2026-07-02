@@ -14,7 +14,7 @@ function calculateScore() {
   }
 
   // calculation logic
-  let score = (correct * 4) - (wrong * 1);
+  let score = (correct * 1);
 
   // display result
   document.getElementById("result").innerText =
