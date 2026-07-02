@@ -1,12 +1,22 @@
 function calculateScore() {
-  let correct = parseInt(document.getElementById("correct").value);
-  let wrong = parseInt(document.getElementById("wrong").value);
+  let correct = document.getElementById("correct").value;
+  let wrong = document.getElementById("wrong").value;
 
-  let score = (correct * 4) - (wrong * 1); // condition logic
+  // convert to numbers
+  correct = Number(correct);
+  wrong = Number(wrong);
 
-  if (isNaN(score)) {
-    document.getElementById("result").innerText = "Please enter valid numbers!";
-  } else {
-    document.getElementById("result").innerText = "Final Score: " + score;
+  // validation fix
+  if (correct === "" || wrong === "" || isNaN(correct) || isNaN(wrong)) {
+    document.getElementById("result").innerText =
+      "⚠️ Please enter valid numbers!";
+    return;
   }
+
+  // calculation logic
+  let score = (correct * 4) - (wrong * 1);
+
+  // display result
+  document.getElementById("result").innerText =
+    "🎯 Final Score: " + score;
 }
